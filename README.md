@@ -1,5 +1,13 @@
 # Pokedex|Lite
 
+This is a "lite" pokedex that I created for a code challenge. It uses Context API and custom hooks for state management, styled-components for the CSS-in-JS, routes, etc..
+
+## Clone and run
+
+To run this project, just clone the repository, cd into it on your local machine and download all dependencies by simply typing:
+
+### `yarn`
+
 ## Available Scripts
 
 In the project directory, you can run:
