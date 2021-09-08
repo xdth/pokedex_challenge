@@ -5,7 +5,7 @@ import { About } from './styles';
 export default function AboutPage() {
   return (
     <>
-      <About>Lorem ipsum dolor sit amet <Link to="/">Back</Link></About>
+      <About data-testid="page-about">About: Lorem ipsum dolor sit amet <Link to="/">Back</Link></About>
       <h1>About Page</h1>
     </>
   );

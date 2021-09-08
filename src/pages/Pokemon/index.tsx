@@ -45,9 +45,12 @@ export default function PokemonPage() {
   const { params } = useRouteMatch<IPokemonParams>();
 
   useEffect(() => {
-    params.id && api.get(`pokemon/${params.id}`).then(response => {
+    params.id 
+    && api.get(`pokemon/${params.id}`)
+    .then(response => {
       setPokemon(response.data);
-    });
+    })
+    .catch(err => console.log(err));
   }, [params.id]);
 
   useEffect(() => {
@@ -121,7 +124,7 @@ export default function PokemonPage() {
             name: evolutionThirdName,
           }
         ]);
-      });
+      }).catch(err => console.log(err));
     }
   }, [species.evolution_chain_url]);
 
@@ -129,21 +132,24 @@ export default function PokemonPage() {
     <>
       <Link to="/">Back</Link>
       {pokemon && (
-        <Pokemon>
+        <Pokemon data-testid="page-pokemon">
           <header>
             {/* <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} alt={pokemon.name} /> */}
             {pokemon.id && <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`} alt={pokemon.name} />}
             <div>
-              <strong>{pokemon.name}</strong>
+              <h1>Pokemon</h1>
+              <strong data-testid="page-pokemon-container-name">{pokemon.name}</strong>
               <p>{species.flavor_text}</p>
+              <div data-testid="page-pokemon-container-evolution">
               {evolution.map(chain => (
                 <p key={chain.id}>
                   <a href={`/pokemon/${chain.id}`} >{chain.id} - {chain.name}</a>
                 </p>
               ))}
+              </div>
             </div>
             <div>
-              <p>Types:</p>
+              <p data-testid="page-pokemon-container-types">Types:</p>
               {pokemon.types && pokemon.types.map(item => <p key={item.type.name}>{item.type.name}</p>)}              
             </div>
           </header>

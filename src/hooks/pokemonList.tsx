@@ -15,6 +15,8 @@ interface IPokemonListContextData {
   pokemonsList: IPokemon[];
   handlePreviousPage(): void;
   handleNextPage(): void;
+  previousPage: string | null;
+  nextPage: string | null;
 }
 
 const PokemonListContext = createContext<IPokemonListContextData>({} as IPokemonListContextData);
@@ -48,7 +50,7 @@ const PokemonListProvider: React.FC = ({ children }) => {
   }, [nextPage]);
 
   return (
-    <PokemonListContext.Provider value={{ pokemonsList, handlePreviousPage, handleNextPage }}>
+    <PokemonListContext.Provider value={{ pokemonsList, previousPage, nextPage, handlePreviousPage, handleNextPage }}>
       {children}
     </PokemonListContext.Provider>
   );

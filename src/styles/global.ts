@@ -18,6 +18,16 @@ export default createGlobalStyle`
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;    
+    background-size: cover;
+    font-family: 'Signika', sans-serif;
+  }
+
+  body {
+    height: 100%;
+  }
+  
+  h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 15px;
   }
 `;

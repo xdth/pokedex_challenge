@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
   return (
     <>
       <Container>
-        <Logo>Pokedex</Logo>
+        <Logo id="logo"><b>Pokedex</b><span>Lite</span></Logo>
         <Menu>
           <MenuItem>
             <Link to="/about">About</Link>
