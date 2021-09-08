@@ -25,8 +25,8 @@ export default createGlobalStyle`
   body {
     height: 100%;
   }
-  
-  h1 {
+
+  h1, h2 {
     font-family: 'Press Start 2P', cursive;
     font-size: 15px;
   }

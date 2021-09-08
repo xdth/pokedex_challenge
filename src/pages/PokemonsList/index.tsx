@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { PokemonListProvider, usePokemonList } from '../../hooks/pokemonList';
 import arrowLeft from '../../assets/arrow-left.svg';
 import arrowRight from '../../assets/arrow-right.svg';
+import LoadingAnimation from '../../components/LoadingAnimation';
 
 const PokemonsList: React.FC = () => {
-  const { pokemonsList, handleNextPage, handlePreviousPage, nextPage, previousPage } = usePokemonList();
+  const { pokemonsList, handleNextPage, handlePreviousPage, nextPage, previousPage, loadingAnimation } = usePokemonList();
 
   return (
     <>
@@ -14,10 +15,14 @@ const PokemonsList: React.FC = () => {
         <Pokemons data-testid="page-pokemonlist">
           {pokemonsList.map(pokemon => (
             <Link to={`/pokemon/${pokemon.id}`} key={pokemon.url}>
-              <Pokemon>
-                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`} alt={pokemon.name} />
-                <strong>{pokemon.name}</strong>
-              </Pokemon>
+              {
+                loadingAnimation 
+                ? <LoadingAnimation /> 
+                : <Pokemon>
+                    <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`} alt={pokemon.name} />
+                    <strong>{pokemon.name}</strong>
+                  </Pokemon>
+              }
             </Link>
           ))}
         </Pokemons>

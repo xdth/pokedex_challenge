@@ -4,6 +4,9 @@ This is a "lite" pokedex that I created for a code challenge. It uses Context AP
 
 ## Features
 - Customised fonts old school, gaming
+- media queries, responsive design
+- state management, passing states to specific routes, state manipulation from child nodes via callback function
+- LoadingAnimation - entirely in CSS3
 
 ## Clone and run
 

@@ -7,7 +7,7 @@ describe("Pokemon page", () => {
     render(<BrowserRouter><Pokemon /></BrowserRouter>);
     const pokemonElement = screen.getByTestId('page-pokemon');
     expect(pokemonElement).toBeInTheDocument();
-    expect(pokemonElement).toHaveTextContent('Pokemon');
+    expect(pokemonElement).toHaveTextContent('Types');
   });
 
   it('should render the Pokemon\'s name container', () => {

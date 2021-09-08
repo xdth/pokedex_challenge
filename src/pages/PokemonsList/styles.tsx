@@ -15,7 +15,7 @@ export const Pokemons = styled.div`
     width: 150px;
     margin: 10px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.5); /* Color white with alpha 0.9*/
+    background-color: rgba(0, 0, 0, 0.5);
     img {
     }
   }

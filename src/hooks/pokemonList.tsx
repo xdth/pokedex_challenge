@@ -17,17 +17,20 @@ interface IPokemonListContextData {
   handleNextPage(): void;
   previousPage: string | null;
   nextPage: string | null;
+  loadingAnimation: boolean;
 }
 
 const PokemonListContext = createContext<IPokemonListContextData>({} as IPokemonListContextData);
 
 const PokemonListProvider: React.FC = ({ children }) => {
   const [pokemonsList, setPokemonsList] = useState<IPokemon[]>([]);
-  const [currentPage, setCurrentPage] = useState<string>('pokemon?offset=0&limit=20');
+  const [currentPage, setCurrentPage] = useState<string>('pokemon?offset=0&limit=27');
   const [previousPage, setPreviousPage] = useState<string | null>(null);
   const [nextPage, setNextPage] = useState<string | null>(null);
+  const [loadingAnimation, setLoadingAnimation] = useState<boolean>(false);
 
   useEffect(() => {
+    setLoadingAnimation(true);
     api.get(currentPage).then(response => {
       response.data.previous && setPreviousPage(response.data.previous);
       response.data.next && setNextPage(response.data.next);
@@ -38,7 +41,7 @@ const PokemonListProvider: React.FC = ({ children }) => {
         pokemon.id = parseInt(splittedUrl[6]);
       }
       setPokemonsList(pokemonsList);
-    });
+    }).then(() => setLoadingAnimation(false));
   }, [currentPage]);
 
   const handlePreviousPage = useCallback(() => {
@@ -50,7 +53,14 @@ const PokemonListProvider: React.FC = ({ children }) => {
   }, [nextPage]);
 
   return (
-    <PokemonListContext.Provider value={{ pokemonsList, previousPage, nextPage, handlePreviousPage, handleNextPage }}>
+    <PokemonListContext.Provider value={{ 
+      pokemonsList, 
+      previousPage, 
+      nextPage, 
+      handlePreviousPage, 
+      handleNextPage, 
+      loadingAnimation
+      }}>
       {children}
     </PokemonListContext.Provider>
   );

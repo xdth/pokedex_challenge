@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom';
+import LoadingAnimation from '../../components/LoadingAnimation';
 import api from '../../services/api';
 import { Pokemon } from './styles';
+import arrowLeft from '../../assets/arrow-left.svg';
 
 interface IPokemonParams {
   id: string;
@@ -41,6 +43,7 @@ export default function PokemonPage() {
   const [pokemon, setPokemon] = useState<IPokemon>({} as IPokemon);
   const [species, setSpecies] = useState<ISpecies>({} as ISpecies);
   const [evolution, setEvolution] = useState<IEvolution[]>([] as IEvolution[]);
+  const [loadingAnimation, setLoadingAnimation] = useState<boolean>(true);
 
   const { params } = useRouteMatch<IPokemonParams>();
 
@@ -124,45 +127,46 @@ export default function PokemonPage() {
             name: evolutionThirdName,
           }
         ]);
-      }).catch(err => console.log(err));
+      }).then(() => setLoadingAnimation(false))
+      .catch(err => console.log(err));
     }
   }, [species.evolution_chain_url]);
 
   return (
     <>
-      <Link to="/">Back</Link>
       {pokemon && (
         <Pokemon data-testid="page-pokemon">
-          <header>
+          <Link id="go-back" to="/">
+            <img src={arrowLeft} alt="arrowLeft" />
+            Back
+          </Link>
+          <section>
+            {loadingAnimation && <LoadingAnimation />}
             {/* <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`} alt={pokemon.name} /> */}
             {pokemon.id && <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`} alt={pokemon.name} />}
-            <div>
-              <h1>Pokemon</h1>
-              <strong data-testid="page-pokemon-container-name">{pokemon.name}</strong>
-              <p>{species.flavor_text}</p>
-              <div data-testid="page-pokemon-container-evolution">
-              {evolution.map(chain => (
-                <p key={chain.id}>
-                  <a href={`/pokemon/${chain.id}`} >{chain.id} - {chain.name}</a>
-                </p>
-              ))}
+              <div>
+                <h1 data-testid="page-pokemon-container-name">{pokemon.name}</h1>
+                <p id="flavor-text">{species.flavor_text}</p>
+                <div data-testid="page-pokemon-container-evolution">
+                  <strong>Evolution chain</strong>
+                  <ul>
+                  {evolution.map(chain => (
+                    chain.id ?
+                    <li key={chain.id}>
+                      <a href={`/pokemon/${chain.id}`} >{chain.name}</a>
+                    </li>
+                    : ''
+                  ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-            <div>
-              <p data-testid="page-pokemon-container-types">Types:</p>
-              {pokemon.types && pokemon.types.map(item => <p key={item.type.name}>{item.type.name}</p>)}              
-            </div>
-          </header>
-          <ul>
-            <li>
-              <strong>{pokemon.height}</strong>
-              <span>Height</span>
-            </li>
-            <li>
-              <strong>{pokemon.weight}</strong>
-              <span>Weight</span>
-            </li>
-          </ul>
+              <div>
+                <strong data-testid="page-pokemon-container-types">Types:</strong>
+                <ul>
+                  {pokemon.types && pokemon.types.map(item => <li key={item.type.name}>{item.type.name}</li>)}  
+                </ul>            
+              </div>
+          </section>
         </Pokemon>
       )}
     </>
