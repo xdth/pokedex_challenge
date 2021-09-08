@@ -16,18 +16,28 @@
 
 This is a "lite" pokedex that I created for a code challenge. It uses Context API and custom hooks for state management, styled-components for the CSS-in-JS, routes, etc..
 
+
+## Online demo
+
+<a href="https://pokedex.dthlabs.com" alt="PokedexLite app demo">https://pokedex.dthlabs.com</a>
+
 ## Features
 
-- Customised fonts old school, gaming
-- media queries, responsive design
-- state management, passing states to specific routes, state manipulation from child nodes via callback function
-- LoadingAnimation - entirely in CSS3
-- Unit testing
+- Amazing design, with beautiful fonts, perfectly mixing modernity to a retro vibe
+- State management: 
+  ■ passing states down to components available in specific routes
+  ■ state manipulation from children nodes via callback function passed through with the context
+- Pagination
+- Media queries, responsive design
+- LoadingAnimation (entirely in CSS3 for faster rendering)
+- SVG images (local) for faster rendering
+- Basic unit testing
+- and more..
 
 ## Unit tests
 
 I did not have a lot of time to complete the challenge and testing was not a requirement. I still added a few basic
-tests.
+tests nonetheless.
 
   Pokemon page
     ✓ should render the Pokemon page
@@ -37,6 +47,30 @@ tests.
 
   About page
     ✓ should render the About page
+
+  <img src="https://i.imgur.com/XihDs7N.png" alt="screenshot">
+
+## Screenshots
+
+ <table style="width:100%; border: none;">
+  <tr style="border: none;">
+    <td style="border: none;">
+      <img src="https://i.imgur.com/D9L3ZzQ.png" alt="screenshot">
+    </td>
+    <td style="border: none;">
+      <img src="https://i.imgur.com/mvwAmX3.png" alt="screenshot">
+    </td>
+  </tr>
+  <tr style="border: none;">
+    <td style="border: none;">
+      <img src="https://i.imgur.com/n4yLF0n.png" alt="screenshot">
+    </td>
+    <td style="border: none;">
+      <img src="https://i.imgur.com/0b5WYaH.png" alt="screenshot">
+    </td>
+  </tr>
+</table> 
+
 
 ## Clone and run
 
@@ -71,7 +105,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 
 For production, you might need to add something like the .htaccess below:
-
+<pre>
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
@@ -81,3 +115,4 @@ For production, you might need to add something like the .htaccess below:
   RewriteCond %{REQUEST_FILENAME} !-l
   RewriteRule . /index.html [L]
 </IfModule>
+</pre>

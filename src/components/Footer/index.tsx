@@ -8,7 +8,6 @@ interface IURLParams {
 
 const Footer: React.FC = () => {
   const { pathname } = useLocation<IURLParams>();
-  console.log(pathname);
   
   return (
     <>
