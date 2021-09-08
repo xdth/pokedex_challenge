@@ -24,9 +24,7 @@ This is a "lite" pokedex that I created for a code challenge. It uses Context AP
 ## Features
 
 - Amazing design, with beautiful fonts, perfectly mixing modernity to a retro vibe
-- State management: 
-  ■ passing states down to components available in specific routes
-  ■ state manipulation from children nodes via callback function passed through with the context
+- State management: passing states down to components available in specific routes and state manipulation from children nodes via callback function passed through with the context
 - Pagination
 - Media queries, responsive design
 - LoadingAnimation (entirely in CSS3 for faster rendering)
@@ -38,7 +36,7 @@ This is a "lite" pokedex that I created for a code challenge. It uses Context AP
 
 I did not have a lot of time to complete the challenge and testing was not a requirement. I still added a few basic
 tests nonetheless.
-
+<pre>
   Pokemon page
     ✓ should render the Pokemon page
     ✓ should render the Pokemon's name container
@@ -47,8 +45,8 @@ tests nonetheless.
 
   About page
     ✓ should render the About page
-
-  <img src="https://i.imgur.com/XihDs7N.png" alt="screenshot">
+</pre>
+<img src="https://i.imgur.com/XihDs7N.png" alt="screenshot">
 
 ## Screenshots
 
