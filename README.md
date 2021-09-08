@@ -1,3 +1,17 @@
+<h3 align="center">
+  Pokedex|Lite
+</h3>
+
+<p align="center">
+  <a href="https://dthlabs.com">
+    <img alt="Made by dthlabs" src="https://img.shields.io/badge/made%20by-dthlabs-%2304D361">
+  </a>
+
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361">
+</p>
+
+
+
 # Pokedex|Lite
 
 This is a "lite" pokedex that I created for a code challenge. It uses Context API and custom hooks for state management, styled-components for the CSS-in-JS, routes, etc..
@@ -7,12 +21,14 @@ This is a "lite" pokedex that I created for a code challenge. It uses Context AP
 - media queries, responsive design
 - state management, passing states to specific routes, state manipulation from child nodes via callback function
 - LoadingAnimation - entirely in CSS3
+- tests
+
 
 ## Clone and run
 
 To run this project, just clone the repository, cd into it on your local machine and download all dependencies by simply typing:
 
-### `yarn`
+`yarn`
 
 ## Available Scripts
 
