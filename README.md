@@ -27,6 +27,7 @@ This is a "lite" pokedex that I created for a code challenge. It uses Context AP
 - State management: passing states down to components available in specific routes and state manipulation from children nodes via callback function passed through with the context
 - Pagination
 - Media queries, responsive design
+- Styled components (CSS-in-JS)
 - LoadingAnimation (entirely in CSS3 for faster rendering)
 - SVG images (local) for faster rendering
 - Basic unit testing

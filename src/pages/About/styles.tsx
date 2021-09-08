@@ -40,4 +40,8 @@ export const About = styled.div`
   h1 {
     margin-bottom: 30px;
   }
+
+  h3 {
+    padding-top: 20px;
+  }
 `;
