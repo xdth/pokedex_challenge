@@ -32,7 +32,7 @@ const PokemonListProvider: React.FC = ({ children }) => {
   useEffect(() => {
     setLoadingAnimation(true);
     api.get(currentPage).then(response => {
-      response.data.previous && setPreviousPage(response.data.previous);
+      response.data.previous ? setPreviousPage(response.data.previous) : setPreviousPage(null);
       response.data.next && setNextPage(response.data.next);
 
       let pokemonsList = response.data.results;
